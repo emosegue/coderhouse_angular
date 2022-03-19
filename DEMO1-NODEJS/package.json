@@ -1,0 +1,12 @@
+{
+  "name": "jsproject",
+  "version": "0.0.1",
+  "description": "Este es mi primer proyecto en javascript",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "keywords": ["javascript", "typescript"],
+  "author": "",
+  "license": "ISC"
+}
