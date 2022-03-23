@@ -21,7 +21,7 @@ Se tomó la desición de crear componentes, aunque solo se hizo uso de sus contr
 
 ### Atributo
 
--ngStyle: Se utlilizó la style.border para aplicarle un borde a aquellas personas mayores de 40 años de color rojo, al resto de color verde
+- ngStyle: Se utlilizó la style.border para aplicarle un borde a aquellas personas mayores de 40 años de color rojo, al resto de color verde
 
 ### Estructurales
 
