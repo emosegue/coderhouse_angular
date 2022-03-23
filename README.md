@@ -7,7 +7,13 @@ _Este repositorio es con fines educativos asociados al curso de Angular dictado 
 ### Pre-requisitos 📋
 
 _Tener instalado node, solo utilizaremos el gestor de paquetes npm_
-_Angular-CLI desde npm_
+_Para verificar si fué instalado correctamente, lanzar el comando_
+
+```console
+npm -v
+```
+
+_Acto seguido, instalar Angular-CLI desde cualquier consola de forma global, por eso el flag -g_
 
 ```console
 npm install -g @angular/cli
@@ -31,6 +37,6 @@ npm install
 
 _Finalmente para correr la aplicación, corremos el webservice de Angular CLI mediante el siguiente comando_
 
-```
+```console
 ng server -o
 ```
