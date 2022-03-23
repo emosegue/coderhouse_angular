@@ -7,7 +7,7 @@ _Este repositorio es con fines educativos asociados al curso de Angular dictado 
 ### Pre-requisitos 📋
 
 _Tener instalado node, solo utilizaremos el gestor de paquetes npm_
-_Para verificar si fué instalado correctamente, lanzar el comando_
+_Para verificar si fué instalado correctamente, abrir una consola y ejecutar el comando_
 
 ```console
 npm -v
