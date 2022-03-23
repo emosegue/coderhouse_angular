@@ -14,7 +14,7 @@ A continuación se detalla la comunicación entre componentes y en donde se ha a
 ## Comunicación entre Componentes
 
 Se tomó la desición de crear componentes, aunque solo se hizo uso de sus controladores bajo la siguiente estructura
-![components](..\documents/components.jpg)
+![components](..\documents\components.jpg)
 
 ## Directivas
 
