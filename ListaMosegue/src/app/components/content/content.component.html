@@ -1,0 +1,28 @@
+<h1>Ejercicio de Directivas e Interpolación</h1>
+
+
+<ul class="alumnos">
+  <li *ngFor="let alumno of alumnos">
+    <div [ngSwitch]="alumno.nombre">
+        <span *ngSwitchCase = "'Emanuel Mosegue'">{{ alumno.nombre }} - Este soy yo, lo detecte con ngSwitch ☺</span>
+        <span *ngSwitchDefault>{{ alumno.nombre }} - Este no soy yo!</span> 
+    </div>
+    <div [style.border]="alumno.edad > 40 ? '1px solid red' : '1px solid green' ">Edad: {{ alumno.edad }}</div>
+      Curso:
+      <ul>
+        Nombre: {{alumno.curso.nombre}}{{alumno.curso.idCurso}}
+      </ul>
+      <ul *ngIf="alumno.edad > 40">
+        <b>Tiene mas de 40 años! Nunca es tarde para aprender</b>
+        </ul>
+      <ul>
+        Profesor: {{alumno.curso.profesor}}
+      </ul>
+      <ul>
+        Tutores: {{alumno.curso.tutores}}
+      </ul>
+      <ul>
+        Fecha de Inicio: {{alumno.curso.fechaInicio | date:'dd/MM/yyyy'}}
+      </ul>
+  </li>
+</ul>
