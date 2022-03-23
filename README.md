@@ -21,7 +21,7 @@ npm install -g @angular/cli
 
 ### Ejecución ⚙️
 
-_Una vez clonado el repositorio de forma local, posicionarse en consola dentro del directorio raiz y ejecutar cualquiera de las siguientes opciones para instalar las dependencias
+_Una vez clonado el repositorio de forma local, posicionarse en consola dentro del directorio raiz y ejecutar cualquiera de las siguientes opciones para instalar las dependencias_
 
 Usando Angular CLI
 
