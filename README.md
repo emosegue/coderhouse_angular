@@ -1,6 +1,6 @@
 # Coderhouse: Angular
 
-_Este repositorio es con fines educativos asociados al curso de Angular dictado por CoderHouse_
+_Este repositorio es con fines educativos asociados al curso de Angular dictado por CoderHouse, camada 27310_
 
 ## Comenzando 🚀
 
