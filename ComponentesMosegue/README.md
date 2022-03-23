@@ -1,27 +1,17 @@
-# Ejecicio1
+# Consigna
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.2.6.
+Crear un layout general con menu a la izquierda, un toolbar y un area de contenido. Cada uno de los apartados del layout será un componente independiente y tendrá su propia hoja de estilos y contenido html. Todos ellos integrados en el app.component.html
 
-## Development server
+## Aspectos a incluir
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+- Se espera la entrega de un proyecto configurado y funcional utilizando creación de componentes
+- Se valorará la utilización de la librería boostrap para la colocación de los componentes
 
-## Code scaffolding
+# Resolucion
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+A continuación se detalla la comunicación entre componentes y en donde se ha aplicado cada uno de los items solicitados en los aspectos a incluir
 
-## Build
+## Componentes
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
 
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+## Boostrap
