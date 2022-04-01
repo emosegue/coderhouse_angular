@@ -14,13 +14,14 @@ A continuación se detalla la comunicación entre componentes y en donde se ha a
 ## Comunicación entre Componentes
 
 Se tomó la desición de crear componentes, aunque solo se hizo uso de sus controladores bajo la siguiente estructura
-![components](..\documents/components.jpg)
+
+![components](documents/components.jpg)
 
 ## Directivas
 
 ### Atributo
 
--ngStyle: Se utlilizó la style.border para aplicarle un borde a aquellas personas mayores de 40 años de color rojo, al resto de color verde
+- ngStyle: Se utlilizó la style.border para aplicarle un borde a aquellas personas mayores de 40 años de color rojo, al resto de color verde
 
 ### Estructurales
 
