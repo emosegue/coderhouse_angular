@@ -1,0 +1,40 @@
+<div class="jumbotron">
+  <h1>Formulario de Ejemplo</h1>
+</div>
+
+<form [formGroup]="formLogin" (ngSubmit)="submit(txtLogin.value)">
+  <div class="container">
+    <div class="row mt-5">
+      <div class="col-5">
+        <label for="name" class="form-label">Nombre:</label>
+        <input type="text" class="form-control" formControlName="name" placeholder="Ingrese nombre" #txtLogin
+        [ngClass]="(formLogin.get('name')?.errors?.['required'] || formLogin.get('name')?.errors?.['minlength'])? 'is-invalid' : 'is-valid'">
+          <p *ngIf="formLogin.get('name')?.errors?.['required']">El control Nombre es obligatorio</p>
+          <p *ngIf="formLogin.get('name')?.errors?.['minlength']">El control Nombre debe tener al menos 5 caracteres</p>
+      </div>
+      <div class="col-5">
+        <label for="email" class="form-label" >Email:</label>
+        <input type="email" class="form-control" formControlName="email" placeholder="example@coderhouse.com.ar"
+        [ngClass]="(formLogin.get('email')?.errors?.['required'] || formLogin.get('email')?.errors?.['email'] )? 'is-invalid' : 'is-valid'" >
+        <p *ngIf="formLogin.get('email')?.errors?.['required']">El email es obligatorio</p>
+        <p *ngIf="formLogin.get('email')?.errors?.['email']">El formato del email es incorrecto</p>
+      </div>
+    </div>
+      <div class="row"> 
+        <div class="col-5">
+          <label for="bornDate">Fecha de Nacimiento</label>
+          <input id="startDate" class="form-control" type="date" />
+        </div>
+        <div class="col-5">
+          Genero
+          <select class="form-select" >
+            <option selected disabled hidden>Seleccione...</option>
+            <option value="1">Masculino</option>
+            <option value="2">Femenino</option>
+            <option value="3">Indefinido</option>
+          </select>
+        </div>
+      </div>
+      <button type="button" class="btn btn-primary mt-4" type="submit">Guardar</button>
+  </div>
+</form>
