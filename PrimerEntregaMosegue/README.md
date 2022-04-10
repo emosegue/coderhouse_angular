@@ -8,11 +8,11 @@ El perfil usuario podrá listar los alumnos y los cursos, pero sí podrá agrega
 
 ## Rubricas Esperadas
 
-✅ Creación de un proyecto Angular CLI con Angular.
-✅ Creación de componentes de layout que incluya un navbar para el menú lateral y un toolbar para el título de la aplicación
-✅ Creación de componentes: Lista de Alumnos y ABM de Alumnos
-✅ Definir formularios Reactivos de ABM de alumnos
-✅ Definir la lógica y estructura de representación de datos en listado, utilizando tablas de Angular Material tomando sus datos de arrays y funciones typescript
+- Creación de un proyecto Angular CLI con Angular.✅
+- Creación de componentes de layout que incluya un navbar para el menú lateral y un toolbar para el título de la aplicación✅
+- Creación de componentes: Lista de Alumnos y ABM de Alumnos✅
+- Definir formularios Reactivos de ABM de alumnos✅
+- Definir la lógica y estructura de representación de datos en listado, utilizando tablas de Angular Material tomando sus datos de arrays y funciones typescript✅
 
 ### Aspectos Positivos sobre las rubricas
 
