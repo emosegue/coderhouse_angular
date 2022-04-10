@@ -1,0 +1,43 @@
+<mat-toolbar color="primary">
+  <div>
+    <button mat-icon-button (click)="sidenav.toggle()">
+      <mat-icon>menu</mat-icon>
+    </button>
+  </div>
+  <a mat-button>CoderHouse</a>
+  <span fxFlex></span>
+  <button mat-button *ngFor="let item of toolbarItems">
+    <mat-icon class="mr">{{ item.icon }}</mat-icon>
+    {{ item.label }}
+  </button>
+</mat-toolbar>
+
+<mat-sidenav-container fxFlexFill>
+  <mat-sidenav
+    #sidenav
+    class="sidenav"
+    [ngStyle]="{ 'width.em': sidenavWidth }"
+    fxLayout="column"
+    mode="side"
+    opened="true">
+    <div fxLayout="column">
+      <mat-nav-list>
+        <mat-list-item routerLink="home" routerLinkActive="active">
+          <mat-icon mat-list-icon class="text-white">assignment</mat-icon>
+          <div fxFlex="10"></div>
+          Cursos
+        </mat-list-item>
+        <mat-list-item routerLink="about" routerLinkActive="active">
+          <mat-icon mat-list-icon class="text-white">face</mat-icon>
+          <div fxFlex="10"></div>
+          Alumnos
+        </mat-list-item>
+      </mat-nav-list>
+    </div>
+  </mat-sidenav>
+  <mat-sidenav-content class="sidenav-content">
+    <app-student>
+      <router-outlet></router-outlet>
+    </app-student>
+  </mat-sidenav-content>
+</mat-sidenav-container>

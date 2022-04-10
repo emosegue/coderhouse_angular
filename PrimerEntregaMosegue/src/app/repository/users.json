@@ -1,0 +1,44 @@
+[
+    {
+        "idUser": 1,
+        "firstName": "Emanuel",
+        "lastName": "Mosegue",
+        "username": "emamosegue",
+        "password": "1234",
+        "phone": "+5492995329567",
+        "bornDate": "08/10/1991",
+        "gender": "Hombre",
+        "profileType": "Desarrollador",
+        "profileImage": "src\\app\\images\\empty-profile.png",
+        "accountType":  [1], 
+        "isAdministrator": true
+    },
+    {
+        "idUser": 2,
+        "firstName": "Marcia",
+        "lastName": "Cardenas",
+        "username": "mcardenas",
+        "password": "asd123",
+        "phone": "+5492995987721",
+        "bornDate": "11/08/1989",
+        "gender": "Mujer",
+        "profileType": "IT",
+        "profileImage": "src\\app\\images\\empty-profile.png",
+        "accountType":  [2],
+        "isAdministrator": false
+    },
+    {
+        "idUser": 3,
+        "firstName": "Shillien",
+        "lastName": "Knight",
+        "username": "bestsk",
+        "password": "asdd",
+        "phone": "+5492995982312",
+        "bornDate": "11/08/1992",
+        "gender": "Hombre",
+        "profileType": "Usuario Final",
+        "profileImage": "src\\app\\images\\empty-profile.png",
+        "accountType":  [2],
+        "isAdministrator": false
+    }
+]
