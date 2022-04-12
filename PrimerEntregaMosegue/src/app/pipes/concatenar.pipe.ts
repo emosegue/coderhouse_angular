@@ -4,7 +4,7 @@ import { Pipe, PipeTransform } from '@angular/core';
   name: 'concatenar',
 })
 export class ConcatenarPipe implements PipeTransform {
-  transform(value: unknown, ...args: unknown[]): unknown {
-    return null;
+  transform(firstName: string, lastName: string): string {
+    return `${firstName} ${lastName}`;
   }
 }

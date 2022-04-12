@@ -15,8 +15,7 @@ export class StudentComponent implements OnInit {
 
   displayedColumns: string[] = [
     'idUser',
-    'firstName',
-    'lastName',
+    'fullName',
     'bornDate',
     'gender',
     'email',
