@@ -36,7 +36,7 @@ Me seria de gran utilidad tener una devolucion adicional sobre:
 
 1. Entender si la estrategia que utilice para renderizar el dialog dinámicamente es correcta. Es decir, haciendo uso de los parámetros en dialogRef.
 2. La forma en la que relleno el formulario desde el controlador. Esta funcionalidad tuve que investigarla por mi cuenta, y si bien cumple con la consigna, tal vez existe una forma mas sencilla de realizarlo que cargar item por item
-3. Como alterar la fecha del datepicker. Intenté agregando el provider detallado abajo, pero no pude.
+3. Como alterar el formato de fecha del datepicker. Intenté agregando el provider detallado abajo, pero no pude.
 
 ```js
 {provide: MAT_DATE_LOCALE, useValue: 'es-ES'},
