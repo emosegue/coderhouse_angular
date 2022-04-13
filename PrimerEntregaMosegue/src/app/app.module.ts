@@ -11,9 +11,10 @@ import { MaterialModule } from './modules/material.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CourseComponent } from './components/course/course.component';
 import { UserService } from './services/user.service';
-import { ConcatenarPipe } from './pipes/concatenar.pipe';
+import { ConcatPipe } from './pipes/concatpipe';
 import { StudentDialogComponent } from './components/student-dialog/student-dialog.component';
 import { MAT_DATE_LOCALE } from '@angular/material/core';
+import { FontSizeDirective } from './directives/font-size.directive';
 
 @NgModule({
   declarations: [
@@ -21,8 +22,9 @@ import { MAT_DATE_LOCALE } from '@angular/material/core';
     LoginComponent,
     StudentComponent,
     CourseComponent,
-    ConcatenarPipe,
+    ConcatPipe,
     StudentDialogComponent,
+    FontSizeDirective,
   ],
   imports: [
     BrowserModule,

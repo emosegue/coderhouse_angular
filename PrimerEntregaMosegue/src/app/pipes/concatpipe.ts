@@ -1,9 +1,9 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({
-  name: 'concatenar',
+  name: 'concat',
 })
-export class ConcatenarPipe implements PipeTransform {
+export class ConcatPipe implements PipeTransform {
   transform(firstName: string, lastName: string): string {
     return `${firstName} ${lastName}`;
   }
