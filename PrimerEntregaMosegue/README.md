@@ -8,19 +8,27 @@ El perfil usuario podrá listar los alumnos y los cursos, pero sí podrá agrega
 
 ## Rubricas Esperadas
 
-- Creación de un proyecto Angular CLI con Angular.✅
-- Creación de componentes de layout que incluya un navbar para el menú lateral y un toolbar para el título de la aplicación✅
-- Creación de componentes: Lista de Alumnos y ABM de Alumnos✅
-- Definir formularios Reactivos de ABM de alumnos✅
-- Definir la lógica y estructura de representación de datos en listado, utilizando tablas de Angular Material tomando sus datos de arrays y funciones typescript✅
+- Proyecto Angular CLI con Angular. ✅
+- Componentes de layout que incluya un navbar para el menú lateral y un toolbar para el título de la app. ✅
+- Componentes: Lista de Alumnos y ABM de Alumnos. ✅
+- Formularios Reactivos de ABM de alumnos. ✅
+- Lógica y estructura de representación de datos en listado, utilizando tablas de Angular Material tomando sus datos de arrays y funciones typescript. ✅
+- Pipe personalizado para mostrar el nombre junto al apellido de los alumnos. ✅
+- Directiva personalizada para que las cabeceras o titulos tengan letra tamaño 20. ✅
+- ~~Uso de la libreria de boostrap (instalada en el angular.json, no usar cdn)~~
+  Durante la clase se aclaró que en caso de implementar la totalidad del proyecto con Material, no era necesario eto, por ende no fué instalado.
+- Subir el código a repositorio de GitHub. ✅
 
 ### Aspectos Positivos sobre las rubricas
+
+Si bien todas las rúbricas del ejercicio fueron realizadas, me gustaría destacar que llevé a cabo ciertos features adicionales.
 
 - Uso de Dialogs
 - Manejo de Dialogs dependiendo de la accion, el dialog de renderiza para un delete, add o update.
 - Manejo de students a partir de un servicio
 - Encapsulamiento de operaciones dentro del service, incluso la obtencion de un nuevo Id
 - Toolbar con dinamismo para generarse a partir de archivo toolbar-items.ts
+- Manejo de formularios reactivos a partir de observables.
 
 ### Aspectos a Mejorar:
 
