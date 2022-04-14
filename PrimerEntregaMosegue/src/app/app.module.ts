@@ -15,6 +15,7 @@ import { ConcatPipe } from './pipes/concatpipe';
 import { StudentDialogComponent } from './components/student-dialog/student-dialog.component';
 import { MAT_DATE_LOCALE } from '@angular/material/core';
 import { FontSizeDirective } from './directives/font-size.directive';
+import { Ng2IziToastModule } from 'ng2-izitoast'; //<-- this line
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { FontSizeDirective } from './directives/font-size.directive';
     FontSizeDirective,
   ],
   imports: [
+    Ng2IziToastModule,
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,

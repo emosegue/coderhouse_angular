@@ -1,13 +1,11 @@
 import { Injectable } from '@angular/core';
-import { Observable, Subject } from 'rxjs';
+import { map, Observable, of, Subject } from 'rxjs';
 import { User } from '../entities/user';
 
 @Injectable({
   providedIn: 'root',
 })
 export class UserService {
-  private userObservable: Observable<User[]>;
-  private userSubject: Subject<User[]>;
   users: User[] = [
     {
       idUser: 1,
@@ -101,19 +99,37 @@ export class UserService {
     },
   ];
 
+  users$: Observable<User[]>;
+  usersPromise!: Promise<any>;
+
   constructor() {
-    this.userSubject = new Subject();
-    this.userObservable = new Observable(suscription =>
-      suscription.next(this.users)
+    //this.users$ = of(this.users);
+
+    this.users$ = new Observable(suscripcion => {
+      suscripcion.next(this.users);
+    });
+
+    this.usersPromise = new Promise((resolve, reject) => {
+      if (this.users.length > 0) {
+        resolve(this.users);
+      } else {
+        reject(this.users);
+      }
+    });
+  }
+
+  getStudentsObservable(): Observable<User[]> {
+    return this.users$;
+  }
+
+  getStudentsObservableFiltered(): Observable<User[]> {
+    return this.users$.pipe(
+      map(users => users.filter(user => user.accountType.includes(2)))
     );
   }
 
-  getUsers() {
-    return this.users;
-  }
-
-  getObservable() {
-    return this.userObservable;
+  getStudentsPromise() {
+    return this.usersPromise;
   }
 
   deleteUser(idUser: number) {
@@ -125,11 +141,9 @@ export class UserService {
 
   addUser(newUser: User) {
     this.users.push(newUser);
-    return this.users;
   }
 
   modifyUser(modifiedUser: User) {
-    console.log(modifiedUser);
     this.users[this.users.findIndex(c => c.idUser === modifiedUser.idUser)] =
       modifiedUser;
   }

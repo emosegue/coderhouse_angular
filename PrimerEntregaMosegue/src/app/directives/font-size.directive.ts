@@ -25,7 +25,6 @@ export class FontSizeDirective implements OnInit {
   }
 
   update() {
-    console.log(this.fontSize);
     if (this.fontSize != null)
       this.element.nativeElement.style.fontSize = this.fontSize;
   }

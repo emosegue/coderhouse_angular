@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Ng2IzitoastService } from 'ng2-izitoast';
 import { ToolbarItems } from './toolbar-items';
 
 @Component({
@@ -11,4 +12,6 @@ export class AppComponent {
   title = 'PrimerEntregaMosegue';
   sidenavWidth = 18;
   sidenavStatus = true;
+
+  constructor() {}
 }

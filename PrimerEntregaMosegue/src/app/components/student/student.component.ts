@@ -1,18 +1,19 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { StudentDialogComponent } from '../student-dialog/student-dialog.component';
 import { UserService } from '../../services/user.service';
 import { MatTable } from '@angular/material/table';
 import { User } from 'src/app/entities/user';
+import { Ng2IzitoastService } from 'ng2-izitoast';
+import { Observable } from 'rxjs';
+import { TOUCH_BUFFER_MS } from '@angular/cdk/a11y/input-modality/input-modality-detector';
 
 @Component({
   selector: 'app-student',
   templateUrl: './student.component.html',
   styleUrls: ['./student.component.css'],
 })
-export class StudentComponent implements OnInit {
-  @ViewChild(MatTable, { static: true }) table?: MatTable<any>;
-
+export class StudentComponent implements OnInit, OnDestroy {
   displayedColumns: string[] = [
     'idUser',
     'fullName',
@@ -21,15 +22,42 @@ export class StudentComponent implements OnInit {
     'email',
     'action',
   ];
-  users: any = [];
-
-  constructor(private dialog: MatDialog, private UserService: UserService) {}
+  @ViewChild(MatTable, { static: true }) table?: MatTable<any>;
+  usersFiltered$!: Observable<User[]>;
+  usersPromise!: Promise<any>;
+  users: User[] = [];
+  usersOb: User[] = [];
+  subscription: any;
 
   ngOnInit(): void {
-    this.UserService.getObservable().subscribe(users => {
-      this.users = users;
+    //section for subscription
+    this.subscription = this.UserService.getStudentsObservable().subscribe({
+      next: users => (this.usersOb = users),
     });
+
+    //section for data filtered
+    this.usersFiltered$ = this.UserService.getStudentsObservableFiltered();
+
+    //section for Promise
+    this.usersPromise = this.UserService.getStudentsPromise();
+    this.usersPromise
+      .then(users => {
+        this.users = users;
+      })
+      .catch(error => {
+        console.error(error);
+      });
   }
+
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
+  }
+
+  constructor(
+    private dialog: MatDialog,
+    private UserService: UserService,
+    public iziToast: Ng2IzitoastService
+  ) {}
 
   openDialog(action: any, obj: any) {
     const dialogConfig = new MatDialogConfig();
@@ -72,15 +100,34 @@ export class StudentComponent implements OnInit {
       )
     );
     this.table?.renderRows();
+    this.showIziToast(
+      `El alumno ${result.firstName} ${result.lastName} se cargo correctamente`
+    );
   }
 
   updateRowData(result: any) {
     this.UserService.modifyUser(result);
     this.table?.renderRows();
+    this.showIziToast(
+      `El alumno ${result.firstName} ${result.lastName} se ha actualizado `
+    );
+    console.log(this.UserService.users);
   }
 
-  deleteRowData(user: any) {
-    this.UserService.deleteUser(user.idUser);
+  deleteRowData(result: any) {
+    this.UserService.deleteUser(result.idUser);
     this.table?.renderRows();
+    this.showIziToast(
+      `El alumno ${result.firstName} ${result.lastName} se elimino`
+    );
+  }
+
+  showIziToast(itMsg: string) {
+    this.iziToast.show({
+      title: itMsg,
+      timeout: 2000,
+      color: 'green',
+      position: 'topCenter',
+    });
   }
 }
