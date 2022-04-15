@@ -5,8 +5,7 @@ import { UserService } from '../../services/user.service';
 import { MatTable } from '@angular/material/table';
 import { User } from 'src/app/entities/user';
 import { Ng2IzitoastService } from 'ng2-izitoast';
-import { Observable } from 'rxjs';
-import { TOUCH_BUFFER_MS } from '@angular/cdk/a11y/input-modality/input-modality-detector';
+import { Observable, Subscription, Subject } from 'rxjs';
 
 @Component({
   selector: 'app-student',
@@ -27,7 +26,9 @@ export class StudentComponent implements OnInit, OnDestroy {
   usersPromise!: Promise<any>;
   users: User[] = [];
   usersOb: User[] = [];
-  subscription: any;
+  usersFilteredOb: User[] = [];
+  subscription!: Subscription;
+  notificador = new Subject();
 
   ngOnInit(): void {
     //section for subscription
@@ -37,6 +38,9 @@ export class StudentComponent implements OnInit, OnDestroy {
 
     //section for data filtered
     this.usersFiltered$ = this.UserService.getStudentsObservableFiltered();
+    this.usersFiltered$.subscribe({
+      next: users => (this.usersFilteredOb = users),
+    });
 
     //section for Promise
     this.usersPromise = this.UserService.getStudentsPromise();
@@ -51,6 +55,8 @@ export class StudentComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.subscription.unsubscribe();
+    this.notificador.next(0);
+    this.notificador.complete();
   }
 
   constructor(
