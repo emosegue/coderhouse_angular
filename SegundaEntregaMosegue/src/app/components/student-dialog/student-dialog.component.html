@@ -1,0 +1,102 @@
+<h2 mat-dialog-title>{{ action }} Alumno</h2>
+
+<div mat-dialog-content>
+  <div *ngIf="action !== 'Delete'; else elseTemplate">
+    <form [formGroup]="registerForm">
+      <div class="tab-content">
+        <div class="content-container tab-content-height">
+          <div fxLayout="column" fxLayoutGap="10px">
+            <mat-form-field appearance="fill">
+              <mat-label>Nombre</mat-label>
+              <input matInput formControlName="firstName" />
+              <mat-error
+                *ngIf="registerForm.get('firstName')?.errors?.['required']">
+                Ingrese un nombre
+              </mat-error>
+              <mat-error
+                *ngIf="registerForm.get('firstName')?.errors?.['pattern']">
+                Ingrese un nombre valido
+              </mat-error>
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+              <mat-label>Apellido</mat-label>
+              <input matInput formControlName="lastName" />
+              <mat-error
+                *ngIf="registerForm.get('lastName')?.errors?.['required']">
+                Ingrese un apellido
+              </mat-error>
+              <mat-error
+                *ngIf="registerForm.get('lastName')?.errors?.['pattern']">
+                Ingrese un apellido valido
+              </mat-error>
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+              <mat-label>Fecha de Nacimiento</mat-label>
+              <input
+                matInput
+                [matDatepicker]="picker"
+                formControlName="bornDate" />
+              <mat-hint>MM/DD/YYYY</mat-hint>
+              <mat-datepicker-toggle
+                matSuffix
+                [for]="picker"></mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+              <mat-label>Genero</mat-label>
+              <mat-select formControlName="gender">
+                <mat-option value="1">Hombre</mat-option>
+                <mat-option value="2">Mujer</mat-option>
+                <mat-option value="0">Indefinido</mat-option>
+              </mat-select>
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+              <mat-label>Ingrese su email</mat-label>
+              <input
+                matInput
+                placeholder="pat@example.com"
+                formControlName="email"
+                required />
+              <mat-error
+                *ngIf="registerForm.get('email')?.errors?.['required']">
+                Ingrese un email
+              </mat-error>
+              <mat-error *ngIf="registerForm.get('email')?.errors?.['invalid']">
+                Ingrese un email valido
+              </mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+  <ng-template #elseTemplate>
+    Esta seguro de eliminar el alumno
+    <b>{{ local_data.firstName }} {{ local_data.lastName }}</b
+    >?
+  </ng-template>
+</div>
+
+<div
+  fxLayout="row"
+  fxLayoutAlign="end end"
+  [style.marginTop.px]="10"
+  fxLayoutGap="5px">
+  <button mat-raised-button color="secondary" (click)="closeDialog()">
+    Cancelar
+  </button>
+  <div *ngIf="action !== 'Delete'; else elseBlock">
+    <button
+      mat-raised-button
+      color="primary"
+      (click)="doAction()"
+      [disabled]="!registerForm.valid">
+      Guardar
+    </button>
+  </div>
+  <ng-template #elseBlock
+    ><button mat-raised-button color="primary" (click)="doAction()">
+      Confirmar
+    </button></ng-template
+  >
+</div>
