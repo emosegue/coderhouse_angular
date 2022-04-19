@@ -7,18 +7,17 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LoginComponent } from './components/login/login.component';
 import { StudentComponent } from './components/student/student.component';
 
-import { MaterialModule } from './modules/material.module';
+import { MaterialModule } from './shared/material.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CourseComponent } from './components/course/course.component';
-import { UserService } from './services/user.service';
-import { ConcatPipe } from './pipes/concatpipe';
+import { UserService } from './core/services/user.service';
 import { StudentDialogComponent } from './components/student-dialog/student-dialog.component';
-import { MAT_DATE_LOCALE } from '@angular/material/core';
-import { FontSizeDirective } from './directives/font-size.directive';
 import { Ng2IziToastModule } from 'ng2-izitoast';
 import { HomeComponent } from './components/home/home.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { InscriptionComponent } from './components/inscription/inscription.component'; //<-- this line
+import { SharedModule } from './shared/shared.module';
+import { CoreModule } from './core/core.module';
 
 @NgModule({
   declarations: [
@@ -26,9 +25,7 @@ import { InscriptionComponent } from './components/inscription/inscription.compo
     LoginComponent,
     StudentComponent,
     CourseComponent,
-    ConcatPipe,
     StudentDialogComponent,
-    FontSizeDirective,
     HomeComponent,
     PageNotFoundComponent,
     InscriptionComponent,
@@ -40,6 +37,8 @@ import { InscriptionComponent } from './components/inscription/inscription.compo
     MaterialModule,
     ReactiveFormsModule,
     AppRoutingModule,
+    SharedModule,
+    CoreModule,
   ],
   providers: [UserService],
   bootstrap: [AppComponent],

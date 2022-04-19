@@ -1,11 +1,11 @@
 import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { StudentDialogComponent } from '../student-dialog/student-dialog.component';
-import { UserService } from '../../services/user.service';
+import { UserService } from '../../core/services/user.service';
 import { MatTable } from '@angular/material/table';
-import { User } from 'src/app/entities/user';
+import { User } from 'src/app/core/models/user.model';
 import { Ng2IzitoastService } from 'ng2-izitoast';
-import { Observable, Subscription, Subject } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-student',
@@ -70,18 +70,16 @@ export class StudentComponent implements OnInit, OnDestroy {
   }
 
   addRowData(result: any) {
-    this.userService.addUser(
-      new User(
-        this.userService.getNewId(),
-        'genericUsername',
-        'genericPassword',
-        result.firstName,
-        result.lastName,
-        result.email,
-        new Date(1995, 8, 10),
-        result.gender
-      )
-    );
+    let newUser = {} as User;
+    newUser.idUser = this.userService.getNewId();
+    newUser.username = 'genericUsername';
+    newUser.password = 'genericPassword';
+    newUser.firstName = result.firstName;
+    newUser.lastName = result.lastName;
+    newUser.email = result.email;
+    newUser.bornDate = result.bornDate;
+    newUser.gender = result.gender;
+    this.userService.addUser(newUser);
     this.table?.renderRows();
     this.showIziToast(
       `El alumno ${result.firstName} ${result.lastName} se cargo correctamente`

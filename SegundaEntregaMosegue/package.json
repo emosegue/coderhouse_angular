@@ -22,6 +22,7 @@
     "@angular/platform-browser": "~13.2.0",
     "@angular/platform-browser-dynamic": "~13.2.0",
     "@angular/router": "~13.2.0",
+    "moment": "^2.29.3",
     "ng2-izitoast": "^2.0.0",
     "rxjs": "^7.5.5",
     "tslib": "^2.3.0",

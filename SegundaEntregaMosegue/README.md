@@ -15,3 +15,27 @@ El perfil usuario podrá listar los alumnos y los cursos, pero sí podrá agrega
 - Feature module de Inscripciones, con sus componentes y servicios
 - Implementación de rutas para acceder a los feature modules
 - Los feature modules deben tener la funcionalidad completa de ABM de cada opción y mostrar los datos utilizando el componente Table de Angular Material
+
+## Separacion de Aspectos: Modules
+
+### Shared Module
+
+- Directives
+- Pipes
+- Material Module
+
+### Core Module
+
+- Services
+- Models:
+  - User
+  - Inscription
+  - Course
+
+### Feature Module
+
+## Patchnotes
+
+- Se agrega la libreria `moment.js` para poder generar el pipe DurationInWeeks (startDate,endDate) => number
+- Se modifican las clases por interfaces y se posicionan dentro de core/model.
+- Se agrega `material.module.ts` dentro del shared module
