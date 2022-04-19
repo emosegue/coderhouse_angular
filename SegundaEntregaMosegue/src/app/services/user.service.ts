@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
-import { map, Observable, of, Subject } from 'rxjs';
+import { BehaviorSubject, map, Observable, Subject } from 'rxjs';
 import { User } from '../entities/user';
 
 @Injectable({
   providedIn: 'root',
 })
 export class UserService {
-  users: User[] = [
+  private users: User[] = [
     {
       idUser: 1,
       firstName: 'Emanuel',
@@ -98,28 +98,18 @@ export class UserService {
       isAdministrator: false,
     },
   ];
+  private users$: BehaviorSubject<User[]> = new BehaviorSubject<User[]>(
+    this.users
+  );
 
-  users$: Observable<User[]>;
-  usersPromise!: Promise<any>;
+  constructor() {}
 
-  constructor() {
-    //this.users$ = of(this.users);
-
-    this.users$ = new Observable(suscripcion => {
-      suscripcion.next(this.users);
-    });
-
-    this.usersPromise = new Promise((resolve, reject) => {
-      if (this.users.length > 0) {
-        resolve(this.users);
-      } else {
-        reject(this.users);
-      }
-    });
+  getUser(): User[] {
+    return this.users;
   }
 
-  getStudentsObservable(): Observable<User[]> {
-    return this.users$;
+  getStudents$(): Observable<User[]> {
+    return this.users$.asObservable();
   }
 
   getStudentsObservableFiltered(): Observable<User[]> {
@@ -128,24 +118,24 @@ export class UserService {
     );
   }
 
-  getStudentsPromise() {
-    return this.usersPromise;
-  }
-
   deleteUser(idUser: number) {
     this.users.splice(
       this.users.findIndex(c => c.idUser === idUser),
       1
     );
+    this.users$.next(this.users);
   }
 
+  //indico a traves del subject que se genero un nuevo evento.
   addUser(newUser: User) {
     this.users.push(newUser);
+    this.users$.next(this.users);
   }
 
   modifyUser(modifiedUser: User) {
     this.users[this.users.findIndex(c => c.idUser === modifiedUser.idUser)] =
       modifiedUser;
+    this.users$.next(this.users);
   }
 
   getNewId() {

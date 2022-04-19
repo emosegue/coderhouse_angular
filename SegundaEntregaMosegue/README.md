@@ -8,8 +8,8 @@ El perfil usuario podrá listar los alumnos y los cursos, pero sí podrá agrega
 
 ## Rubricas Esperadas
 
-- Proyecto Angular publicado en github
-- Menú lateral con las opciones a Alumnos, Cursos e Inscripciones
+- Proyecto Angular publicado en github ✅
+- Menú lateral con las opciones a Alumnos, Cursos e Inscripciones ✅
 - Feature module de Alumnos, con sus componentes y servicios
 - Feature module de Cursos, con sus componentes y servicios
 - Feature module de Inscripciones, con sus componentes y servicios

@@ -15,7 +15,10 @@ import { ConcatPipe } from './pipes/concatpipe';
 import { StudentDialogComponent } from './components/student-dialog/student-dialog.component';
 import { MAT_DATE_LOCALE } from '@angular/material/core';
 import { FontSizeDirective } from './directives/font-size.directive';
-import { Ng2IziToastModule } from 'ng2-izitoast'; //<-- this line
+import { Ng2IziToastModule } from 'ng2-izitoast';
+import { HomeComponent } from './components/home/home.component';
+import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
+import { InscriptionComponent } from './components/inscription/inscription.component'; //<-- this line
 
 @NgModule({
   declarations: [
@@ -26,14 +29,17 @@ import { Ng2IziToastModule } from 'ng2-izitoast'; //<-- this line
     ConcatPipe,
     StudentDialogComponent,
     FontSizeDirective,
+    HomeComponent,
+    PageNotFoundComponent,
+    InscriptionComponent,
   ],
   imports: [
     Ng2IziToastModule,
     BrowserModule,
-    AppRoutingModule,
     BrowserAnimationsModule,
     MaterialModule,
     ReactiveFormsModule,
+    AppRoutingModule,
   ],
   providers: [UserService],
   bootstrap: [AppComponent],

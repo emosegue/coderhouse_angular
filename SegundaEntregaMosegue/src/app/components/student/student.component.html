@@ -14,7 +14,7 @@
   <table
     #mytable
     mat-table
-    [dataSource]="usersOb"
+    [dataSource]="users"
     class="mat-elevation-z8 student-table">
     <!-- Id Column -->
     <ng-container matColumnDef="idUser">
@@ -71,8 +71,4 @@
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
   </table>
-
-  <div class="divisor" [style.marginTop.px]="50"></div>
-  <p><span [appFontSize]="'20px'">JSON con async</span></p>
-  <p>{{ usersFiltered$ | async | json }}</p>
 </div>

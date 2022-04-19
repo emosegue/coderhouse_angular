@@ -21,49 +21,26 @@ export class StudentComponent implements OnInit, OnDestroy {
     'email',
     'action',
   ];
+
   @ViewChild(MatTable, { static: true }) table?: MatTable<any>;
-  usersFiltered$!: Observable<User[]>;
-  usersPromise!: Promise<any>;
+  users$!: Observable<User[]>;
   users: User[] = [];
-  usersOb: User[] = [];
-  usersFilteredOb: User[] = [];
   subscription!: Subscription;
-  notificador = new Subject();
+
+  constructor(
+    private dialog: MatDialog,
+    private userService: UserService,
+    public iziToast: Ng2IzitoastService
+  ) {}
 
   ngOnInit(): void {
-    //section for subscription
-    this.subscription = this.UserService.getStudentsObservable().subscribe({
-      next: users => (this.usersOb = users),
-    });
-
-    //section for data filtered
-    this.usersFiltered$ = this.UserService.getStudentsObservableFiltered();
-    this.usersFiltered$.subscribe({
-      next: users => (this.usersFilteredOb = users),
-    });
-
-    //section for Promise
-    this.usersPromise = this.UserService.getStudentsPromise();
-    this.usersPromise
-      .then(users => {
-        this.users = users;
-      })
-      .catch(error => {
-        console.error(error);
-      });
+    this.users$ = this.userService.getStudents$();
+    this.subscription! = this.users$.subscribe(users => (this.users = users));
   }
 
   ngOnDestroy(): void {
     this.subscription.unsubscribe();
-    this.notificador.next(0);
-    this.notificador.complete();
   }
-
-  constructor(
-    private dialog: MatDialog,
-    private UserService: UserService,
-    public iziToast: Ng2IzitoastService
-  ) {}
 
   openDialog(action: any, obj: any) {
     const dialogConfig = new MatDialogConfig();
@@ -93,9 +70,9 @@ export class StudentComponent implements OnInit, OnDestroy {
   }
 
   addRowData(result: any) {
-    this.UserService.addUser(
+    this.userService.addUser(
       new User(
-        this.UserService.getNewId(),
+        this.userService.getNewId(),
         'genericUsername',
         'genericPassword',
         result.firstName,
@@ -112,16 +89,15 @@ export class StudentComponent implements OnInit, OnDestroy {
   }
 
   updateRowData(result: any) {
-    this.UserService.modifyUser(result);
+    this.userService.modifyUser(result);
     this.table?.renderRows();
     this.showIziToast(
       `El alumno ${result.firstName} ${result.lastName} se ha actualizado `
     );
-    console.log(this.UserService.users);
   }
 
   deleteRowData(result: any) {
-    this.UserService.deleteUser(result.idUser);
+    this.userService.deleteUser(result.idUser);
     this.table?.renderRows();
     this.showIziToast(
       `El alumno ${result.firstName} ${result.lastName} se elimino`
