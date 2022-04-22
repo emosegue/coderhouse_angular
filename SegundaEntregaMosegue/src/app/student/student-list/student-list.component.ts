@@ -9,10 +9,10 @@ import { Observable, Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-student',
-  templateUrl: './student.component.html',
-  styleUrls: ['./student.component.css'],
+  templateUrl: './student-list.component.html',
+  styleUrls: ['./student-list.component.css'],
 })
-export class StudentComponent implements OnInit, OnDestroy {
+export class StudentListComponent implements OnInit, OnDestroy {
   displayedColumns: string[] = [
     'idUser',
     'fullName',
@@ -34,6 +34,7 @@ export class StudentComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit(): void {
+    //this.userService.getUsers().subscribe(data => (this.users = data));
     this.users$ = this.userService.getStudents$();
     this.subscription! = this.users$.subscribe(users => (this.users = users));
   }
@@ -60,16 +61,16 @@ export class StudentComponent implements OnInit, OnDestroy {
 
     dialogRef.afterClosed().subscribe(result => {
       if (result.event == 'Add') {
-        this.addRowData(result.data);
+        this.addUser(result.data);
       } else if (result.event == 'Update') {
-        this.updateRowData(result.data);
+        this.updateUser(result.data);
       } else if (result.event == 'Delete') {
-        this.deleteRowData(result.data);
+        this.deleteUser(result.data);
       }
     });
   }
 
-  addRowData(result: any) {
+  addUser(result: any) {
     let newUser = {} as User;
     newUser.idUser = this.userService.getNewId();
     newUser.username = 'genericUsername';
@@ -79,27 +80,41 @@ export class StudentComponent implements OnInit, OnDestroy {
     newUser.email = result.email;
     newUser.bornDate = result.bornDate;
     newUser.gender = result.gender;
-    this.userService.addUser(newUser);
-    this.table?.renderRows();
-    this.showIziToast(
-      `El alumno ${result.firstName} ${result.lastName} se cargo correctamente`
-    );
+    this.userService.addUser(newUser).subscribe(user => {
+      this.users.push(user);
+      this.table?.renderRows();
+      this.showIziToast(
+        `El alumno ${result.firstName} ${result.lastName} se cargo correctamente`
+      );
+    });
   }
 
-  updateRowData(result: any) {
-    this.userService.modifyUser(result);
-    this.table?.renderRows();
-    this.showIziToast(
-      `El alumno ${result.firstName} ${result.lastName} se ha actualizado `
-    );
+  updateUser(result: any) {
+    this.userService.updateUser(result).subscribe(user => {
+      this.users[this.users.findIndex(c => c.idUser === result.idUser)] =
+        result;
+      this.table?.renderRows();
+      this.showIziToast(
+        `El alumno ${result.firstName} ${result.lastName} se ha actualizado `
+      );
+    });
   }
 
-  deleteRowData(result: any) {
-    this.userService.deleteUser(result.idUser);
-    this.table?.renderRows();
-    this.showIziToast(
-      `El alumno ${result.firstName} ${result.lastName} se elimino`
-    );
+  deleteUser(result: any): void {
+    this.userService.deleteUser(result.idUser).subscribe({
+      next: deletedUser => {
+        this.users = this.users.filter(
+          user => user.idUser !== deletedUser.idUser
+        );
+        this.table?.renderRows();
+        this.showIziToast(
+          `El alumno ${result.firstName} ${result.lastName} se elimino`
+        );
+      },
+      error: error => {
+        console.error('No se pudo eliminar el usuario', error);
+      },
+    });
   }
 
   showIziToast(itMsg: string) {

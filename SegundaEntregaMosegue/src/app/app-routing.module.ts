@@ -1,15 +1,15 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { StudentComponent } from './components/student/student.component';
-import { HomeComponent } from './components/home/home.component';
-import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
-import { CourseComponent } from './components/course/course.component';
-import { InscriptionComponent } from './components/inscription/inscription.component';
+import { StudentListComponent } from './student/student-list/student-list.component';
+import { CourseListComponent } from './course/course-list/course-list.component';
+import { InscriptionListComponent } from './inscription/inscription-list/inscription-list.component';
+import { PageNotFoundComponent } from './core/page-not-found/page-not-found.component';
+import { HomeComponent } from './core/home/home.component';
 
 const routes: Routes = [
-  { path: 'alumnos', component: StudentComponent },
-  // { path: 'cursos', component: CourseComponent },
-  // { path: 'inscripciones', component: InscriptionComponent },
+  { path: 'alumnos', component: StudentListComponent },
+  { path: 'cursos', component: CourseListComponent },
+  { path: 'inscripciones', component: InscriptionListComponent },
   { path: '', component: HomeComponent },
   { path: '**', component: PageNotFoundComponent },
 ];
