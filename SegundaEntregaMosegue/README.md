@@ -32,10 +32,26 @@ El perfil usuario podrá listar los alumnos y los cursos, pero sí podrá agrega
   - Inscription
   - Course
 
-### Feature Module
+### Featured Modules
+
+- Course
+  - course-list
+  - course-dialog
+- Student
+  - student-list
+  - student-dialog
+- Inscription
+  - inscription-list
+  - inscription-dialog
+- Auth
+  - login
+  - register
 
 ## Patchnotes
 
 - Se agrega la libreria `moment.js` para poder generar el pipe DurationInWeeks (startDate,endDate) => number
 - Se modifican las clases por interfaces y se posicionan dentro de core/model.
 - Se agrega `material.module.ts` dentro del shared module
+- Se modifica el CRUD de `users.service.ts` para que interactue con una API Rest y pueda aplicar persistencia de datos.
+- Se soluciona el problema por el cual no se cargaba el seleccionable de genero
+- Se reestructura el proyecto en base a Shared, Core y Featured Modules.
