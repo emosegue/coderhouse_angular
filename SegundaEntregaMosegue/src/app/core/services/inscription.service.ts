@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, map } from 'rxjs';
+import { Course } from '../models/course.model';
 import { Inscription } from '../models/inscription.model';
 
 @Injectable({
@@ -14,6 +15,16 @@ export class InscriptionService {
 
   getInscriptions$(): Observable<Inscription[]> {
     return this.httpClient.get<Inscription[]>(this.inscriptionsUrl);
+  }
+
+  getCoursesByStudent$(idStudent: number): Observable<Inscription[]> {
+    return this.httpClient
+      .get<Inscription[]>(this.inscriptionsUrl)
+      .pipe(
+        map(ins =>
+          ins.filter(inscription => inscription.student.idUser == idStudent)
+        )
+      );
   }
 
   deleteInscription(idInscription: number): Observable<any> {

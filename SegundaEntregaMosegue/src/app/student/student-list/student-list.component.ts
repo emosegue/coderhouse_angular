@@ -70,6 +70,8 @@ export class StudentListComponent implements OnInit, OnDestroy {
     });
   }
 
+  showInformation(obj: any) {}
+
   addUser(result: any) {
     let newUser = {} as User;
     newUser.idUser = this.userService.getNewId();

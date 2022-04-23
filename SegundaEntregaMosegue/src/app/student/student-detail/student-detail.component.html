@@ -1,21 +1,49 @@
-<div class="button-content" fxLayout="row">
-  <div fxFlex="1"></div>
-  <button
-    mat-raised-button
-    color="primary"
-    [style.marginTop.px]="10"
-    (click)="test('Add', {})">
-    Nuevo
-  </button>
+<div class="user-information-container" fxLayout>
+  <mat-list>
+    <mat-list-item>
+      Nombre:
+      {{ userDetails.firstName | concat: userDetails.lastName }}
+    </mat-list-item>
+    <mat-list-item>
+      Email:
+      {{ userDetails.email }}
+    </mat-list-item>
+    <mat-list-item>
+      Genero:
+      <span [ngSwitch]="userDetails.gender">
+        <span *ngSwitchCase="'0'">Indefinido</span>
+        <span *ngSwitchCase="'1'">Hombre</span>
+        <span *ngSwitchCase="'2'">Mujer</span>
+      </span>
+    </mat-list-item>
+    <mat-list-item>
+      Telefono:
+      {{ userDetails.phone }}
+    </mat-list-item>
+    <mat-list-item>
+      Fecha de Nacimiento:
+      {{ userDetails.bornDate }}
+    </mat-list-item>
+    <mat-list-item>
+      Perfil de Usuario:
+      <span [ngSwitch]="userDetails.profileType">
+        <span *ngSwitchCase="'1'">Dev</span>
+        <span *ngSwitchCase="'2'">IT</span>
+        <span *ngSwitchCase="'3'">Usuario</span>
+      </span>
+    </mat-list-item>
+  </mat-list>
 </div>
 
-<div class="table-content">
+<mat-divider></mat-divider>
+
+<div class="table-content" fxLayout="column">
   <p><span [appFontSize]="'20px'">Inscripciones</span></p>
   <table
     #mytable
     mat-table
-    [dataSource]="inscriptions"
-    class="mat-elevation-z8 inscription-table">
+    [dataSource]="userInscriptions"
+    class="mat-elevation-z8 userInscription-table">
     <!-- Id Column -->
     <ng-container matColumnDef="idInscription">
       <th mat-header-cell *matHeaderCellDef>Id</th>
@@ -26,13 +54,6 @@
       <th mat-header-cell *matHeaderCellDef>Curso</th>
       <td mat-cell *matCellDef="let element">
         {{ element.course.name }}
-      </td>
-    </ng-container>
-
-    <ng-container matColumnDef="student">
-      <th mat-header-cell *matHeaderCellDef>Alumno</th>
-      <td mat-cell *matCellDef="let element">
-        {{ element.student.firstName | concat: element.student.lastName }}
       </td>
     </ng-container>
 
@@ -47,12 +68,6 @@
     <ng-container matColumnDef="action">
       <th mat-header-cell *matHeaderCellDef></th>
       <td mat-cell *matCellDef="let element" class="action-link">
-        <button (click)="test('Update', element)">
-          <mat-icon>edit</mat-icon>
-        </button>
-        <button [style.marginLeft.px]="10" (click)="test('Show', element)">
-          <mat-icon>visibility</mat-icon>
-        </button>
         <button
           [style.marginLeft.px]="10"
           (click)="test('Delete', element)"

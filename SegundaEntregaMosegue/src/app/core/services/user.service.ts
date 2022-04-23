@@ -12,7 +12,19 @@ export class UserService {
   constructor(private httpClient: HttpClient) {}
 
   getStudents$(): Observable<User[]> {
-    return this.httpClient.get<User[]>(this.usersUrl);
+    return this.httpClient
+      .get<User[]>(this.usersUrl)
+      .pipe(map(users => users.filter(user => user.accountType.includes(2))));
+  }
+
+  getProfessors$(): Observable<User[]> {
+    return this.httpClient
+      .get<User[]>(this.usersUrl)
+      .pipe(map(users => users.filter(user => user.accountType.includes(1))));
+  }
+
+  getStudentById$(idStudent: number): Observable<User> {
+    return this.httpClient.get<User>(`${this.usersUrl}/${idStudent}`);
   }
 
   deleteUser(idUser: number): Observable<any> {
