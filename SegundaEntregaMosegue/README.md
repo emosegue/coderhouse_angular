@@ -1,4 +1,4 @@
-# Primer Entrega - Trabajo Final
+# Segunda Entrega - Trabajo Final
 
 ## Consigna
 
