@@ -4,6 +4,7 @@ export interface Course {
   idCourse: number;
   name: string;
   startDate: Date;
+  endDate: Date;
   amountHours: number;
-  professor: Professor;
+  professor: number;
 }

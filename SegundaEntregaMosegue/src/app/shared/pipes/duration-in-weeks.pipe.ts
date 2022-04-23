@@ -6,6 +6,8 @@ import * as moment from 'moment';
 })
 export class DurationInWeeksPipe implements PipeTransform {
   transform(startDate: Date, endDate: Date): number {
-    return moment(startDate).diff(moment(endDate));
+    const diff = moment(endDate).diff(moment(startDate));
+    const diffInWeeks = moment.duration(diff).as('weeks');
+    return Math.ceil(diffInWeeks);
   }
 }

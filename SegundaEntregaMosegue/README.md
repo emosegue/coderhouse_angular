@@ -55,3 +55,5 @@ El perfil usuario podrá listar los alumnos y los cursos, pero sí podrá agrega
 - Se modifica el CRUD de `users.service.ts` para que interactue con una API Rest y pueda aplicar persistencia de datos.
 - Se soluciona el problema por el cual no se cargaba el seleccionable de genero
 - Se reestructura el proyecto en base a Shared, Core y Featured Modules.
+- Se agrega el pipe durationInWeeks haciendo uso de moment.js para mostrar la diferencia en semanas desde la fecha de inicio y fin del curso.
+-

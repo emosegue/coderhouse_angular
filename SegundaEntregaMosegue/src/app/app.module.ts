@@ -12,6 +12,10 @@ import { CoreModule } from './core/core.module';
 import { HttpClientModule } from '@angular/common/http';
 import { StudentModule } from './student/student.module';
 import { StudentRoutingModule } from './student/student-routing.module';
+import { CourseModule } from './course/course.module';
+import { CourseRoutingModule } from './course/course-routing.module';
+import { CourseService } from './core/services/course.service';
+import { InscriptionService } from './core/services/inscription.service';
 
 @NgModule({
   declarations: [AppComponent],
@@ -22,12 +26,12 @@ import { StudentRoutingModule } from './student/student-routing.module';
     BrowserAnimationsModule,
     MaterialModule,
     AppRoutingModule,
-    StudentRoutingModule,
     SharedModule,
     CoreModule,
-    StudentModule,
+    CourseModule,
+    CourseRoutingModule,
   ],
-  providers: [UserService],
+  providers: [UserService, CourseService, InscriptionService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

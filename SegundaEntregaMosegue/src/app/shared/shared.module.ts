@@ -7,6 +7,6 @@ import { DurationInWeeksPipe } from './pipes/duration-in-weeks.pipe';
 @NgModule({
   declarations: [FontSizeDirective, ConcatPipe, DurationInWeeksPipe],
   imports: [CommonModule],
-  exports: [FontSizeDirective, ConcatPipe],
+  exports: [FontSizeDirective, ConcatPipe, DurationInWeeksPipe],
 })
 export class SharedModule {}

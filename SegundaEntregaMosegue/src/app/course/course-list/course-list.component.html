@@ -1,1 +1,60 @@
-<p>course-list works!</p>
+<div class="button-content" fxLayout="row">
+  <div fxFlex="1"></div>
+  <button
+    mat-raised-button
+    color="primary"
+    [style.marginTop.px]="10"
+    (click)="test('Add', {})">
+    Nuevo
+  </button>
+</div>
+
+<div class="table-content">
+  <p><span [appFontSize]="'20px'">Cursos</span></p>
+  <table
+    #mytable
+    mat-table
+    [dataSource]="courses"
+    class="mat-elevation-z8 course-table">
+    <!-- Id Column -->
+    <ng-container matColumnDef="idCourse">
+      <th mat-header-cell *matHeaderCellDef>Id</th>
+      <td mat-cell *matCellDef="let element">{{ element.idCourse }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef>Nombre</th>
+      <td mat-cell *matCellDef="let element">
+        {{ element.name }}
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="duration">
+      <th mat-header-cell *matHeaderCellDef>Duracion</th>
+      <td mat-cell *matCellDef="let element">
+        {{ element.startDate | durationInWeeks: element.endDate }} Semanas
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="professor">
+      <th mat-header-cell *matHeaderCellDef>Profesor</th>
+      <td mat-cell *matCellDef="let element">
+        {{ element.professor.firstName | concat: element.professor.lastName }}
+      </td>
+    </ng-container>
+
+    <!-- Action Column -->
+    <ng-container matColumnDef="action">
+      <th mat-header-cell *matHeaderCellDef></th>
+      <td mat-cell *matCellDef="let element" class="action-link">
+        <a (click)="test('Update', element)">Editar</a> |
+        <a (click)="test('Delete', element)" [ngStyle]="{ color: 'red' }">
+          Eliminar</a
+        >
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+  </table>
+</div>

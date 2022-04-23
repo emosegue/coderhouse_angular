@@ -1,13 +1,10 @@
-import {
-  User as Professor,
-  User,
-  User as Student,
-} from 'src/app/core/models/user.model';
+import { User, User as Student } from 'src/app/core/models/user.model';
+import { Course } from 'src/app/core/models/course.model';
 
 export interface Inscription {
   idInscription: number;
   student: Student;
-  professor: Professor;
+  course: Course;
   transactionDate: Date;
   transactionUser: User;
 }

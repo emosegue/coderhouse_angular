@@ -8,7 +8,6 @@ import { User } from '../models/user.model';
 })
 export class UserService {
   private usersUrl = 'https://625eb1fd873d6798e2ac43d3.mockapi.io/api/v1/users';
-  private users$: BehaviorSubject<User[]> = new BehaviorSubject<User[]>([]);
 
   constructor(private httpClient: HttpClient) {}
 
