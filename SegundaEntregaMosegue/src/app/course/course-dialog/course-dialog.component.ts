@@ -40,7 +40,7 @@ export class CourseDialogComponent implements OnInit, OnDestroy {
       startDate: new FormControl(data.startDate, Validators.required),
       endDate: new FormControl(data.endDate, Validators.required),
       amountHours: new FormControl(data.amountHours, Validators.required),
-      professor: new FormControl(data.professor, Validators.required),
+      professor: new FormControl(data.professor.idUser, Validators.required),
     });
   }
   ngOnDestroy() {
@@ -63,7 +63,12 @@ export class CourseDialogComponent implements OnInit, OnDestroy {
         startDate: this.registerForm.value['startDate'],
         endDate: this.registerForm.value['endDate'],
         amountHours: this.registerForm.value['amountHours'],
-        professor: this.registerForm.value['professor'],
+        professor:
+          this.professors[
+            this.professors.findIndex(
+              user => user.idUser === this.registerForm.value['professor']
+            )
+          ],
       };
     }
     this.dialogRef.close({ event: this.action, data: this.local_data });

@@ -16,6 +16,10 @@ export class CourseService {
     return this.httpClient.get<Course[]>(this.coursesUrl);
   }
 
+  getCourseById$(idCourse: number): Observable<Course> {
+    return this.httpClient.get<Course>(`${this.coursesUrl}/${idCourse}`);
+  }
+
   deleteCourse(idCourse: number): Observable<any> {
     return this.httpClient.delete(`${this.coursesUrl}/${idCourse}`);
   }

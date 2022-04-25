@@ -6,5 +6,5 @@ export interface Course {
   startDate: Date;
   endDate: Date;
   amountHours: number;
-  professor: number;
+  professor: Professor;
 }

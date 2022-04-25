@@ -17,12 +17,28 @@ export class InscriptionService {
     return this.httpClient.get<Inscription[]>(this.inscriptionsUrl);
   }
 
+  getInscriptionById$(idInscription: number): Observable<Inscription> {
+    return this.httpClient.get<Inscription>(
+      `${this.inscriptionsUrl}/${idInscription}`
+    );
+  }
+
   getCoursesByStudent$(idStudent: number): Observable<Inscription[]> {
     return this.httpClient
       .get<Inscription[]>(this.inscriptionsUrl)
       .pipe(
         map(ins =>
           ins.filter(inscription => inscription.student.idUser == idStudent)
+        )
+      );
+  }
+
+  getStudentsByCourse$(idCourse: number): Observable<Inscription[]> {
+    return this.httpClient
+      .get<Inscription[]>(this.inscriptionsUrl)
+      .pipe(
+        map(ins =>
+          ins.filter(inscription => inscription.course.idCourse == idCourse)
         )
       );
   }

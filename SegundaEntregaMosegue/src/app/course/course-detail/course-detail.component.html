@@ -1,1 +1,78 @@
-<p>course-detail works!</p>
+<div class="course-information-container" fxLayout>
+  <mat-list>
+    <mat-list-item>
+      Nombre:
+      {{ courseDetails.name }}
+    </mat-list-item>
+    <mat-list-item>
+      Fecha de Inicio:
+      {{ courseDetails.startDate | date: 'MM/dd/yyyy' }}
+    </mat-list-item>
+    <mat-list-item>
+      Fecha de Finalizacion:
+      {{ courseDetails.endDate | date: 'MM/dd/yyyy' }}
+    </mat-list-item>
+    <mat-list-item>
+      Cantidad de Horas:
+      {{ courseDetails.amountHours }}
+    </mat-list-item>
+    <mat-list-item>
+      Profesor:
+      {{
+        courseDetails.professor.firstName
+          | concat: courseDetails.professor.lastName
+      }}
+    </mat-list-item>
+  </mat-list>
+</div>
+
+<mat-divider></mat-divider>
+
+<div class="table-content" fxLayout="column">
+  <p [style.marginTop.px]="10">
+    <span [appFontSize]="'20px'">Inscripciones</span>
+  </p>
+  <table
+    #mytable
+    mat-table
+    [dataSource]="courseInscriptions"
+    class="mat-elevation-z8 userInscription-table">
+    <!-- Id Column -->
+    <ng-container matColumnDef="idInscription">
+      <th mat-header-cell *matHeaderCellDef>Id</th>
+      <td mat-cell *matCellDef="let element">{{ element.idInscription }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="course">
+      <th mat-header-cell *matHeaderCellDef>Nombre</th>
+      <td mat-cell *matCellDef="let element">
+        {{ element.student.firstName | concat: element.student.lastName }}
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="inscriptionDate">
+      <th mat-header-cell *matHeaderCellDef>Fecha de Inscripcion</th>
+      <td mat-cell *matCellDef="let element">
+        {{ element.transactionDate | date: 'MM/dd/yyyy' }}
+      </td>
+    </ng-container>
+
+    <!-- Action Column -->
+    <ng-container matColumnDef="action">
+      <th mat-header-cell *matHeaderCellDef></th>
+      <td mat-cell *matCellDef="let element" class="action-link">
+        <button
+          mat-button
+          color="warn"
+          [style.marginLeft.px]="10"
+          (click)="doAction(element)"
+          [ngStyle]="{ color: 'red' }">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+  </table>
+</div>

@@ -7,6 +7,7 @@ import { CourseListComponent } from './course/course-list/course-list.component'
 import { InscriptionListComponent } from './inscription/inscription-list/inscription-list.component';
 import { StudentDetailComponent } from './student/student-detail/student-detail.component';
 import { CourseDetailComponent } from './course/course-detail/course-detail.component';
+import { InscriptionDetailComponent } from './inscription/inscription-detail/inscription-detail.component';
 
 const routes: Routes = [
   {
@@ -29,6 +30,7 @@ const routes: Routes = [
   },
   { path: 'alumnos/:id', component: StudentDetailComponent },
   { path: 'cursos/:id', component: CourseDetailComponent },
+  { path: 'inscripciones/:id', component: InscriptionDetailComponent },
   { path: '', component: HomeComponent },
   { path: '**', component: PageNotFoundComponent },
 ];

@@ -23,7 +23,7 @@ export class UserService {
       .pipe(map(users => users.filter(user => user.accountType.includes(1))));
   }
 
-  getStudentById$(idStudent: number): Observable<User> {
+  getUserById$(idStudent: number): Observable<User> {
     return this.httpClient.get<User>(`${this.usersUrl}/${idStudent}`);
   }
 

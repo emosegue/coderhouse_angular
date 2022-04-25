@@ -60,17 +60,62 @@ export class CourseListComponent implements OnInit, OnDestroy {
 
     dialogRef.afterClosed().subscribe(result => {
       if (result.event == 'Add') {
-        console.log(result.data);
+        this.addCourse(result.data);
       } else if (result.event == 'Update') {
-        console.log(result.data);
+        this.updateCourse(result.data);
       } else if (result.event == 'Delete') {
-        console.log(result.data);
+        this.deleteCourse(result.data);
       }
     });
   }
 
-  test(action: any, data: any) {
-    console.log(action, data);
-    console.log(this.courses);
+  addCourse(result: any) {
+    let newCourse = {} as Course;
+    newCourse.idCourse = this.courseService.getNewId();
+    newCourse.name = result.name;
+    newCourse.startDate = result.startDate;
+    newCourse.endDate = result.endDate;
+    newCourse.amountHours = result.amountHours;
+    newCourse.professor = result.professor;
+    this.courseService.addCourse(newCourse).subscribe(course => {
+      this.courses.push(course);
+      this.table?.renderRows();
+      this.showIziToast(`El curso ${result.name}  se cargo correctamente`);
+    });
+  }
+
+  updateCourse(result: any) {
+    this.courseService.updateCourse(result).subscribe(course => {
+      this.courses[
+        this.courses.findIndex(c => c.idCourse === result.idCourse)
+      ] = result;
+      this.table?.renderRows();
+      this.showIziToast(`El curso ${result.name} se ha actualizado `);
+    });
+  }
+
+  deleteCourse(result: any): void {
+    this.courseService.deleteCourse(result.idCourse).subscribe({
+      next: deletedCourse => {
+        this.courses = this.courses.filter(
+          course => course.idCourse !== deletedCourse.idCourse
+        );
+        this.table?.renderRows();
+        this.showIziToast(`El curso ${result.name} se elimino`);
+        //modificaciones en cascada, borro el alumno?
+      },
+      error: error => {
+        console.error('No se pudo eliminar el curso', error);
+      },
+    });
+  }
+
+  showIziToast(itMsg: string) {
+    this.iziToast.show({
+      title: itMsg,
+      timeout: 2000,
+      color: 'green',
+      position: 'topCenter',
+    });
   }
 }

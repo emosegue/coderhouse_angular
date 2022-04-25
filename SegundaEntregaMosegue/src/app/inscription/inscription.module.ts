@@ -6,9 +6,10 @@ import { InscriptionListComponent } from './inscription-list/inscription-list.co
 import { InscriptionDialogComponent } from './inscription-dialog/inscription-dialog.component';
 import { InscriptionService } from '../core/services/inscription.service';
 import { SharedModule } from '../shared/shared.module';
+import { InscriptionDetailComponent } from './inscription-detail/inscription-detail.component';
 
 @NgModule({
-  declarations: [InscriptionListComponent, InscriptionDialogComponent],
+  declarations: [InscriptionListComponent, InscriptionDialogComponent, InscriptionDetailComponent],
   imports: [SharedModule, CommonModule, InscriptionRoutingModule],
   providers: [InscriptionService],
 })
