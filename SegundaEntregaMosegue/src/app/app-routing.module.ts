@@ -12,25 +12,19 @@ import { InscriptionDetailComponent } from './inscription/inscription-detail/ins
 const routes: Routes = [
   {
     path: 'alumnos',
-    component: StudentListComponent,
     loadChildren: () =>
       import('./student/student.module').then(m => m.StudentModule),
   },
   {
     path: 'cursos',
-    component: CourseListComponent,
     loadChildren: () =>
       import('./course/course.module').then(m => m.CourseModule),
   },
   {
     path: 'inscripciones',
-    component: InscriptionListComponent,
     loadChildren: () =>
       import('./inscription/inscription.module').then(m => m.InscriptionModule),
   },
-  { path: 'alumnos/:id', component: StudentDetailComponent },
-  { path: 'cursos/:id', component: CourseDetailComponent },
-  { path: 'inscripciones/:id', component: InscriptionDetailComponent },
   { path: '', component: HomeComponent },
   { path: '**', component: PageNotFoundComponent },
 ];

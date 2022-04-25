@@ -4,8 +4,13 @@ import { StudentListComponent } from './student-list/student-list.component';
 import { StudentDetailComponent } from './student-detail/student-detail.component';
 
 const routes: Routes = [
-  { path: 'alumnos', component: StudentListComponent },
-  { path: 'alumnos/:id', component: StudentDetailComponent },
+  {
+    path: '',
+    children: [
+      { path: 'list', component: StudentListComponent },
+      { path: 'details/:id', component: StudentDetailComponent },
+    ],
+  },
 ];
 
 @NgModule({
