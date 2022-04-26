@@ -27,7 +27,10 @@ El perfil usuario podrá listar los alumnos y los cursos, pero sí podrá agrega
 ### Shared Module
 
 - Directives
+  - font-size
 - Pipes
+  - concat
+  - duration-in-weeks
 - Material Module
 
 ### Core Module
