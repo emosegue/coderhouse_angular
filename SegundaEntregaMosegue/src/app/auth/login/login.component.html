@@ -1,1 +1,40 @@
-<p>login works!</p>
+<div class="login-wrapper" fxLayout="row" fxLayoutAlign="center center">
+  <mat-card class="box">
+    <mat-card-header>
+      <mat-card-title>Ingreso</mat-card-title>
+    </mat-card-header>
+    <form class="example-form" [formGroup]="loginForm">
+      <mat-card-content>
+        <mat-form-field class="example-full-width">
+          <input matInput formControlName="username" placeholder="Username" />
+          <mat-error *ngIf="loginForm.get('username')?.errors?.['required']">
+            Ingrese un usuario
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field class="example-full-width">
+          <input matInput placeholder="Password" formControlName="password" />
+          <mat-error *ngIf="loginForm.get('username')?.errors?.['required']">
+            Ingrese una contraseña
+          </mat-error>
+        </mat-form-field>
+      </mat-card-content>
+      <mat-card-footer class="card-footer">
+        <a mat-list-item class="card-footer-a" routerLink="/ayuda"
+          >Olvide la contraseña</a
+        >
+        <a mat-list-item class="card-footer-a" routerLink="/login/registro">
+          Registrarme
+        </a>
+      </mat-card-footer>
+
+      <button
+        mat-stroked-button
+        color="primary"
+        class="btn-block"
+        (click)="doAction()"
+        [disabled]="!loginForm.valid">
+        Entrar
+      </button>
+    </form>
+  </mat-card>
+</div>

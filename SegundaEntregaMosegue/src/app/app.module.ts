@@ -8,8 +8,6 @@ import { UserService } from './core/services/user.service';
 import { SharedModule } from './shared/shared.module';
 import { CoreModule } from './core/core.module';
 import { HttpClientModule } from '@angular/common/http';
-import { CourseModule } from './course/course.module';
-import { CourseRoutingModule } from './course/course-routing.module';
 import { CourseService } from './core/services/course.service';
 import { InscriptionService } from './core/services/inscription.service';
 

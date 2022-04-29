@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { ToolbarItems } from './toolbar-items';
+import { AuthenticationService } from './core/services/authentication.service';
 
 @Component({
   selector: 'app-root',
@@ -12,5 +13,13 @@ export class AppComponent {
   sidenavWidth = 18;
   sidenavStatus = true;
 
-  constructor() {}
+  constructor(private authenticationService: AuthenticationService) {}
+
+  hasLoggedUser() {
+    return localStorage.getItem('user') !== null;
+  }
+
+  logout() {
+    this.authenticationService.logout();
+  }
 }

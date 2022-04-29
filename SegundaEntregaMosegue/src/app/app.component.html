@@ -7,9 +7,21 @@
   </div>
   <a mat-button routerLink="/" routerLinkActive="active">CoderHouse</a>
   <span fxFlex></span>
-  <button mat-button *ngFor="let item of toolbarItems">
-    <mat-icon class="mr">{{ item.icon }}</mat-icon>
-    {{ item.label }}
+  <div *ngIf="!hasLoggedUser(); else logoutBlock">
+    <button mat-button>
+      <mat-icon>login</mat-icon>
+      <a class="toolbar-items" href="/login">Ingresar</a>
+    </button>
+  </div>
+  <ng-template #logoutBlock>
+    <button mat-button>
+      <mat-icon>logout</mat-icon>
+      <a class="toolbar-items" (click)="logout()">Cerrar Sesión</a>
+    </button>
+  </ng-template>
+  <button mat-button>
+    <mat-icon>help</mat-icon>
+    <a class="toolbar-items" href="/ayuda">Ayuda</a>
   </button>
 </mat-toolbar>
 

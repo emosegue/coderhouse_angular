@@ -7,37 +7,37 @@ import { Course } from '../models/course.model';
   providedIn: 'root',
 })
 export class CourseService {
-  private coursesUrl =
+  private API_URL =
     'https://625eb1fd873d6798e2ac43d3.mockapi.io/api/v1/courses';
 
   constructor(private httpClient: HttpClient) {}
 
   getCourses$(): Observable<Course[]> {
-    return this.httpClient.get<Course[]>(this.coursesUrl);
+    return this.httpClient.get<Course[]>(this.API_URL);
   }
 
   getCourseById$(idCourse: number): Observable<Course> {
-    return this.httpClient.get<Course>(`${this.coursesUrl}/${idCourse}`);
+    return this.httpClient.get<Course>(`${this.API_URL}/${idCourse}`);
   }
 
   deleteCourse(idCourse: number): Observable<any> {
-    return this.httpClient.delete(`${this.coursesUrl}/${idCourse}`);
+    return this.httpClient.delete(`${this.API_URL}/${idCourse}`);
   }
 
   //indico a traves del subject que se genero un nuevo evento.
   addCourse(newCourse: Course): Observable<any> {
-    return this.httpClient.post(`${this.coursesUrl}`, newCourse);
+    return this.httpClient.post(`${this.API_URL}`, newCourse);
   }
 
   updateCourse(modifiedCourse: Course): Observable<any> {
     return this.httpClient.put(
-      `${this.coursesUrl}/${modifiedCourse.idCourse}`,
+      `${this.API_URL}/${modifiedCourse.idCourse}`,
       modifiedCourse
     );
   }
 
   getNewId() {
-    this.httpClient.get(this.coursesUrl).subscribe(courses => {
+    this.httpClient.get(this.API_URL).subscribe(courses => {
       let coursesArray = courses as Course[];
       return coursesArray.length + 1;
     });

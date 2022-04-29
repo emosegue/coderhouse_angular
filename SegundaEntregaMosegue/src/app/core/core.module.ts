@@ -6,10 +6,17 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { InscriptionService } from './services/inscription.service';
 import { CourseService } from './services/course.service';
 import { SharedModule } from '../shared/shared.module';
+import { HelpComponent } from './help/help.component';
+import { AuthenticationService } from './services/authentication.service';
 
 @NgModule({
   imports: [CommonModule, SharedModule],
-  declarations: [HomeComponent, PageNotFoundComponent],
-  providers: [UserService, InscriptionService, CourseService],
+  declarations: [HomeComponent, PageNotFoundComponent, HelpComponent],
+  providers: [
+    UserService,
+    InscriptionService,
+    CourseService,
+    AuthenticationService,
+  ],
 })
 export class CoreModule {}

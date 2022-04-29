@@ -9,7 +9,11 @@ import { SharedModule } from '../shared/shared.module';
 import { InscriptionDetailComponent } from './inscription-detail/inscription-detail.component';
 
 @NgModule({
-  declarations: [InscriptionListComponent, InscriptionDialogComponent, InscriptionDetailComponent],
+  declarations: [
+    InscriptionListComponent,
+    InscriptionDialogComponent,
+    InscriptionDetailComponent,
+  ],
   imports: [SharedModule, CommonModule, InscriptionRoutingModule],
   providers: [InscriptionService],
 })

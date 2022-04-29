@@ -40,7 +40,10 @@ export class CourseDialogComponent implements OnInit, OnDestroy {
       startDate: new FormControl(data.startDate, Validators.required),
       endDate: new FormControl(data.endDate, Validators.required),
       amountHours: new FormControl(data.amountHours, Validators.required),
-      professor: new FormControl(data.professor.idUser, Validators.required),
+      professor: new FormControl(
+        data.professor ? data.professor.idUser : '',
+        Validators.required
+      ),
     });
   }
   ngOnDestroy() {
