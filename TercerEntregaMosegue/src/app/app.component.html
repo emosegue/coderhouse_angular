@@ -1,0 +1,73 @@
+<router-outlet></router-outlet>
+<mat-toolbar color="primary">
+  <div>
+    <button mat-icon-button (click)="sidenav.toggle()">
+      <mat-icon>menu</mat-icon>
+    </button>
+  </div>
+  <a mat-button routerLink="/" routerLinkActive="active">CoderHouse</a>
+  <span fxFlex></span>
+  <div *ngIf="!hasLoggedUser(); else logoutBlock">
+    <button mat-button>
+      <mat-icon>login</mat-icon>
+      <a class="toolbar-items" href="/login">Ingresar</a>
+    </button>
+  </div>
+  <ng-template #logoutBlock>
+    <button mat-button>
+      <mat-icon>logout</mat-icon>
+      <a class="toolbar-items" (click)="logout()">Cerrar Sesión</a>
+    </button>
+  </ng-template>
+  <button mat-button>
+    <mat-icon>help</mat-icon>
+    <a class="toolbar-items" href="/ayuda">Ayuda</a>
+  </button>
+</mat-toolbar>
+
+<mat-sidenav-container fxFlexFill>
+  <mat-sidenav
+    #sidenav
+    class="sidenav"
+    [ngStyle]="{ 'width.em': sidenavWidth }"
+    fxLayout="column"
+    mode="side"
+    opened="true">
+    <div fxLayout="column">
+      <mat-nav-list>
+        <a mat-list-item routerLink="/cursos/list" routerLinkActive="active">
+          <mat-icon mat-list-icon class="text-white">assignment</mat-icon>
+          <div fxFlex="10"></div>
+          Cursos
+        </a>
+        <a mat-list-item routerLink="/alumnos/list" routerLinkActive="active">
+          <mat-icon mat-list-icon class="text-white">face</mat-icon>
+          <div fxFlex="10"></div>
+          Alumnos
+        </a>
+        <a
+          mat-list-item
+          routerLink="/inscripciones/list"
+          routerLinkActive="activebutton">
+          <mat-icon mat-list-icon class="text-white">description</mat-icon>
+          <div fxFlex="10"></div>
+          Inscripciones
+        </a>
+        <a
+          *ngIf="hasAdminLogged()"
+          mat-list-item
+          routerLink="/admin"
+          routerLinkActive="activebutton">
+          <mat-icon mat-list-icon class="text-white"
+            >admin_panel_settings</mat-icon
+          >
+          <div fxFlex="10"></div>
+          Administrador
+        </a>
+      </mat-nav-list>
+    </div>
+  </mat-sidenav>
+  <mat-sidenav-content class="sidenav-content">
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>
