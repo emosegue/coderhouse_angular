@@ -1,0 +1,30 @@
+<div class="course-information-container" fxLayout>
+  <mat-list>
+    <mat-list-item>
+      Id de Inscripcion:
+      {{ inscriptionDetail.idInscription }}
+    </mat-list-item>
+    <mat-list-item>
+      Alumno:
+      {{
+        inscriptionDetail.student.firstName
+          | concat: inscriptionDetail.student.lastName
+      }}
+    </mat-list-item>
+    <mat-list-item>
+      Curso:
+      {{ inscriptionDetail.course.name }}
+    </mat-list-item>
+    <mat-list-item>
+      Fecha de la Transaccion
+      {{ inscriptionDetail.transactionDate | date: 'yyyy/dd/MM' }}
+    </mat-list-item>
+    <!-- <mat-list-item>
+      Usuario que realizo la inscripcion:
+      {{
+        inscriptionDetail.transactionUser.firstName
+          | concat: inscriptionDetail.transactionUser.lastName
+      }}
+    </mat-list-item> -->
+  </mat-list>
+</div>
