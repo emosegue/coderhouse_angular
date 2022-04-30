@@ -25,22 +25,22 @@ export class StudentDialogComponent {
     this.local_data = { ...data };
     this.action = this.local_data.action;
     this.registerForm = this.fb.group({
-      idUser: new FormControl(data.idUser),
-      firstName: new FormControl(data.firstName, [
+      idUser: new FormControl(data !== null ? data.idUser : ''),
+      firstName: new FormControl(data !== null ? data.firstName : '', [
         Validators.pattern('[a-zA-Z ]*'),
         Validators.required,
       ]),
-      lastName: new FormControl(data.lastName, [
+      lastName: new FormControl(data !== null ? data.lastName : '', [
         Validators.pattern('[a-zA-Z ]*'),
         Validators.required,
       ]),
-      email: new FormControl(data.email, [
+      email: new FormControl(data !== null ? data.email : '', [
         Validators.required,
         Validators.email,
       ]),
-      phone: new FormControl(data.phone),
-      bornDate: new FormControl(data.bornDate),
-      gender: new FormControl(data.gender),
+      phone: new FormControl(data !== null ? data.phone : ''),
+      bornDate: new FormControl(data !== null ? data.bornDate : ''),
+      gender: new FormControl(data !== null ? data.gender : ''),
     });
   }
 

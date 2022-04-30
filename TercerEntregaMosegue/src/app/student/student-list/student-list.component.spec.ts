@@ -1,20 +1,18 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
+import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { StudentListComponent } from './student-list.component';
 import { SharedModule } from '../../shared/shared.module';
 import { UserService } from '../../core/services/user.service';
-import { HttpClient } from '@angular/common/http';
 
 describe('StudentListComponent', () => {
   let component: StudentListComponent;
   let fixture: ComponentFixture<StudentListComponent>;
-  let userService: UserService;
-  let httpController: HttpClient;
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [StudentListComponent],
-      imports: [SharedModule],
+      imports: [SharedModule,HttpClientTestingModule],
       providers: [UserService],
     }).compileComponents();
   }));
@@ -28,23 +26,23 @@ describe('StudentListComponent', () => {
   it('Los usuarios se asignaron correctamente en el controlador', () => {
     const fixture = TestBed.createComponent(StudentListComponent);
     const controller = fixture.componentInstance;
-
     fixture.detectChanges();
 
-    expect(controller.users).toBeTruthy();
-    expect(controller.users).toBeGreaterThan(0);
+    const userService = TestBed.get(UserService);
+    userService.getStudents$().subscribe((students: any) => {
+      expect(students).toBeGreaterThan(0);
 
-    expect(component).toBeTruthy();
+      expect(controller.users.length).toBeGreaterThan(0);
+  });
+
+
   });
 
   it('Los usuarios se renderizaron correctamente en la vista', () => {
     const fixture = TestBed.createComponent(StudentListComponent);
     const view = fixture.nativeElement as HTMLElement;
-
     fixture.detectChanges();
-
     expect(view.querySelector('div')).toBeTruthy();
-
-    expect(component).toBeTruthy();
   });
 });
+
