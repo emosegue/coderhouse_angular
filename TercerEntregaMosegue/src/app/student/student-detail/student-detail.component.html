@@ -69,6 +69,7 @@
       <th mat-header-cell *matHeaderCellDef></th>
       <td mat-cell *matCellDef="let element" class="action-link">
         <button
+          *ngIf="hasAdminLogged()"
           [style.marginLeft.px]="10"
           (click)="doAction(element)"
           [ngStyle]="{ color: 'red' }">

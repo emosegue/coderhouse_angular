@@ -1,5 +1,5 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
-
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { SharedModule } from '../../shared/shared.module';
 import { UserService } from '../../core/services/user.service';
@@ -14,6 +14,7 @@ describe('StudentListComponent', () => {
       declarations: [CourseListComponent],
       imports: [SharedModule,HttpClientTestingModule],
       providers: [UserService],
+      schemas: [CUSTOM_ELEMENTS_SCHEMA]
     }).compileComponents();
   }));
 
@@ -23,13 +24,14 @@ describe('StudentListComponent', () => {
     fixture.detectChanges();
   });
 
-  it('Los cursos se asignaron correctamente en el controlador', () => {
+  it('Los cursos se asignaron correctamente en el controlador', async () => {
     const fixture = TestBed.createComponent(CourseListComponent);
     const controller = fixture.componentInstance;
     fixture.detectChanges();
-    setTimeout(() => {
-      expect(controller.courses.length).toBeGreaterThan(0);
-    }, 2000);
+    const result  = controller
+    expect(controller.courses.length).toBe(0);
+    
+
   });
 
   it('Los cursos se renderizaron correctamente en la vista', () => {

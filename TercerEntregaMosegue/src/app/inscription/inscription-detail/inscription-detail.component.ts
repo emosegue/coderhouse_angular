@@ -43,4 +43,5 @@ export class InscriptionDetailComponent implements OnInit {
     this.notifier.next(0);
     this.notifier.complete();
   }
+
 }

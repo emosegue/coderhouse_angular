@@ -24,7 +24,7 @@ describe("StudentDialogComponent", () => {
         provide: MatDialogRef,
         useValue: {}
       },InscriptionService, UserService],
-      imports: [ReactiveFormsModule,MatSelectModule,MatInputModule,BrowserAnimationsModule]
+      imports: [ReactiveFormsModule,BrowserAnimationsModule,MaterialModule]
     }).compileComponents();
   });
 

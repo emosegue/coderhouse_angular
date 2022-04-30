@@ -121,6 +121,11 @@ export class InscriptionListComponent implements OnInit, OnDestroy {
     });
   }
 
+  hasAdminLogged() {
+    let user = JSON.parse(localStorage.getItem('user') || '{}');
+    return user.accountType ? user.accountType.includes(1) : false;
+  }
+
   showIziToast(itMsg: string) {
     this.iziToast.show({
       title: itMsg,

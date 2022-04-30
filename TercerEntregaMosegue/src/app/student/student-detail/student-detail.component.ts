@@ -105,4 +105,9 @@ export class StudentDetailComponent implements OnInit {
       position: 'topCenter',
     });
   }
+
+  hasAdminLogged() {
+    let user = JSON.parse(localStorage.getItem('user') || '{}');
+    return user.accountType ? user.accountType.includes(1) : false;
+  }
 }

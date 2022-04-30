@@ -1,6 +1,7 @@
 <div class="button-content" fxLayout="row">
   <div fxFlex="1"></div>
   <button
+    *ngIf="hasAdminLogged()"
     mat-raised-button
     color="primary"
     [style.marginTop.px]="10"
@@ -61,13 +62,17 @@
     <ng-container matColumnDef="action">
       <th mat-header-cell *matHeaderCellDef></th>
       <td mat-cell *matCellDef="let element" class="action-link">
-        <button mat-button (click)="openDialog('Update', element)">
+        <button
+          *ngIf="hasAdminLogged()"
+          mat-button
+          (click)="openDialog('Update', element)">
           <mat-icon>edit</mat-icon>
         </button>
         <button mat-button [routerLink]="['/alumnos/details', element.idUser]">
           <mat-icon>visibility</mat-icon>
         </button>
         <button
+          *ngIf="hasAdminLogged()"
           mat-button
           color="warn"
           (click)="openDialog('Delete', element)"

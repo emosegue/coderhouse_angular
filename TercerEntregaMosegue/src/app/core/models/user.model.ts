@@ -9,7 +9,6 @@ export interface User {
   bornDate: Date;
   gender: genderEnum;
   profileType: profileEnum | undefined;
-  profileImage: File | undefined;
   accountType: number[];
   isAdministrator: boolean | undefined;
 }

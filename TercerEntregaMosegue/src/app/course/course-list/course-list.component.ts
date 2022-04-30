@@ -118,4 +118,9 @@ export class CourseListComponent implements OnInit, OnDestroy {
       position: 'topCenter',
     });
   }
+  
+  hasAdminLogged() {
+    let user = JSON.parse(localStorage.getItem('user') || '{}');
+    return user.accountType ? user.accountType.includes(1) : false;
+  }
 }
