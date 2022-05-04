@@ -55,10 +55,10 @@ describe("AuthenticationService", () => {
         ],
         "isAdministrator": false,
         "idUser": 2
-       },];
+       }];
 
        AuthenticationService.login("admin", "admin").subscribe((data) => {
-        expect(data[0].idUser).toEqual(mockUsuario[0].idUser);
+        expect(data[0].idUser).toEqual(1);
       });
       
       // AuthenticationService.login("user", "user").subscribe((data) => {

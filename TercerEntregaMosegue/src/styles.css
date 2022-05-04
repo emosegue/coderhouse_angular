@@ -1,7 +1,6 @@
 html,body, #st-full-pg {
   height: 100%;
   margin: 0;
-  overflow: hidden;
 }
 
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
