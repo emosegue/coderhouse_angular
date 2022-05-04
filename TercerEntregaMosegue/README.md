@@ -20,4 +20,5 @@ El perfil  usuario podrá listar los alumnos y los cursos, pero sí podrá agreg
 ## Datos auxiliares
 
 Usuario Administrador: admin/admin
+
 Usuario Comun : user/user
