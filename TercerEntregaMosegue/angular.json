@@ -2,7 +2,7 @@
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
   "cli": {
     "analytics": false,
-    "defaultCollection": "@angular-eslint/schematics"
+    "defaultCollection": "@ngrx/schematics"
   },
   "version": 1,
   "newProjectRoot": "projects",
@@ -35,7 +35,9 @@
               "src/styles.css",
               "./node_modules/izitoast/dist/css/iziToast.min.css"
             ],
-            "scripts": ["./node_modules/izitoast/dist/js/iziToast.min.js"]
+            "scripts": [
+              "./node_modules/izitoast/dist/js/iziToast.min.js"
+            ]
           },
           "configurations": {
             "production": {

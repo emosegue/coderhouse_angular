@@ -73,18 +73,22 @@ export class StudentListComponent implements OnInit, OnDestroy {
   addUser(result: any) {
     let newUser = {} as User;
     newUser.idUser = this.userService.getNewId();
-    newUser.username = 'genericUsername';
-    newUser.password = 'genericPassword';
+    newUser.username = result.lastName;
+    newUser.password = result.lastName;
     newUser.firstName = result.firstName;
     newUser.lastName = result.lastName;
     newUser.email = result.email;
     newUser.bornDate = result.bornDate;
+    newUser.accountType = [2];
     newUser.gender = result.gender;
     this.userService.addUser(newUser).subscribe(user => {
       this.users.push(user);
       this.table?.renderRows();
       this.showIziToast(
         `El alumno ${result.firstName} ${result.lastName} se cargo correctamente`
+      );
+      this.showIziToast(
+        `Las credenciales para loguearte son: ${result.lastName} / ${result.lastName}`
       );
     });
   }
