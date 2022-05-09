@@ -1,0 +1,7 @@
+<h1 *ngIf="hasLoggedUser(); else inviteHome">
+  Bienvenid@ a la pagina principal!
+</h1>
+
+<ng-template #inviteHome>
+  <h1>Bienvenido Invitado, debes loguearte para continuar</h1>
+</ng-template>
